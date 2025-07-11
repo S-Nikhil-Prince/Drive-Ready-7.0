@@ -1,0 +1,16 @@
+# KERNEL: time=45: recived data = 16  tlast = 0 
+# KERNEL: time=65: recived data = 17  tlast = 0 
+# KERNEL: time=85: recived data = 29  tlast = 0 
+# KERNEL: time=105: recived data = 31  tlast = 0 
+# KERNEL: time=125: recived data = 59  tlast = 0 
+# KERNEL: time=145: recived data = 60  tlast = 0 
+# KERNEL: time=165: recived data = 65  tlast = 0 
+# KERNEL: time=185: recived data = 30  tlast = 1 
+# KERNEL: time=205: recived data = 16  tlast = 0 
+# KERNEL: time=225: recived data = 17  tlast = 0 
+# KERNEL: time=245: recived data = 29  tlast = 0 
+# KERNEL: time=265: recived data = 31  tlast = 0 
+# KERNEL: time=285: recived data = 59  tlast = 0 
+# KERNEL: time=305: recived data = 60  tlast = 0 
+# KERNEL: time=325: recived data = 65  tlast = 0 
+# KERNEL: time=345: recived data = 30  tlast = 1
