@@ -51,6 +51,9 @@ ARRAYS AND VECTORS:
             logic [7:0] my_vector; // 8-bit vector
             logic [3:0] my_vector[5]; // 4-bit vector with 5 elements
 -------------------------------------------------------------------------------------------------
+Array Operations with example program
+
+-------------------------------------------------------------------------------------------------
 New operator in sv {inside}
     if(a inside inta[0:5],b,c);
         $display("a is inside the range");
@@ -66,6 +69,7 @@ Why is SV?
  *supports OOPS(Object Oriented Programming).
  *SV gives Compact code.
  *Contains User defined data types.
+
 What is the role of functional verification engineer?
     *He verifies weather the function it was intended to perform is being performed without errors or Not.
     *He Designs the testbench.
@@ -85,11 +89,11 @@ What is the role of functional verification?
                 Port Connection
 ----------------------------------------------------------------------------------------------------------------
 SV TB Architecture:
-    *In SV TB all features are implementes as different components.
+    *In SV TB all features are implemented as different components.
     What every thing refers to?
         *Stimulus generation.
-        *Driving the inpust to the {DUT.Driver\Bus Functional Model}.
-        *Monitoring desing input and output.{}
+        *Driving the inputs to the {DUT.Driver\Bus Functional Model}.
+        *Monitoring design input and output.{}
         *Concuct different types of coverages.
         *Predict the output.
         *compare the real and expected output.
@@ -124,10 +128,32 @@ SV TB Architecture:
 Data Types:
 ============
     *Data types are used to define the type of data that can be stored in a variable.
+-------------------------------------------------------------------------------------------
+Enum program:
+// Code your testbench here
+// or browse Examples
+module tb;
+  enum {blue,green,red,orange,white} clr;
+  initial
+  begin
+    clr=clr.first();
+    $display("clr=%0d,name of the colour=%0s", clr, clr.name);
+    clr=clr.next();
+    $display("clr=%0d,name of the colour=%0s", clr, clr.name);
+    clr=clr.last();
+    $display("clr=%0d,name of the colour=%0s", clr, clr.name);
+    clr=clr.prev();
+    $display("clr=%0d,name of the colour=%0s", clr, clr.name);
+    clr=clr.prev();
+    $display("clr=%0d,name of the colour=%0s", clr, clr.name);
+  end
+endmodule
+---Output---
+================================================|
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     ------------Program for Size and default of data types-----------------
 ****Format specifier to do so is %0d.
-****Format specifier to do so is %0d.
+
 -program-
 module tb;
     bit a;
@@ -187,7 +213,7 @@ module tb;
         end
     endmodule
 --------Output----------
-a=204; --- a=256-50=204
+a=204; because --- a=256-50=204
 b=-50; ---- b=-50;
 ------------------------
 another case:
@@ -272,7 +298,7 @@ realtime=10.30000;
     *A process is a sequence of statements that execute in a specific order.
     *In SystemVerilog, processes are typically defined using the `always` or `initial` blocks.
 
-SV defines the following states of aprocess:
+SV defines the following states of a process:
     finished
     running
     suspended
@@ -346,6 +372,7 @@ Mailbox: (Generator and BFM) / (Monitor and Scoreboard)
     => Mailbox memory can be increased / Decreased / Delete at Run time.
     => Mailbox behaviour is similar to FIFO.
     => Mailbox Brings Blocking Nature in between the Communicating Devices (Generator and BFM).
+
 Q. Why Queue can't be used for Connecting Generator and BFM.
     Ans: Queue is also a FIFO.
     => But Queue is not a Blocking Construct.
@@ -373,7 +400,7 @@ Q. Why Queue can't be used for Connecting Generator and BFM.
             *They are useful when you want to check the status of the mailbox without blocking the execution of your code.
 
 **********
-    1.Gneric Mailbox:
+    1.Generic Mailbox:
         *It can get or put any type of data.
         *It is created using the `new()` method without any type parameter.
           Syntax:
@@ -456,7 +483,7 @@ Mostly 9600 baud rate is used in UART communication.
 the maximum baud rate is 2764800.
 ----> UART always contains baud rate.
     
-     Parity Bit : Is used to detect errors in data transmission.
+    *Parity Bit : Is used to detect errors in data transmission.
     *Parity bit is an extra bit added to a binary data to make the number of 1's either even or odd.
 
      ----> 8 Bit Data : 1000_1001
@@ -466,15 +493,13 @@ the maximum baud rate is 2764800.
     --->Whenever the data with odd parity then the parity bit is 1.
     --->1000_1001 = 0100_1001
 =======================================================-=-=-=-=-=-=-=-=--=-=-=
- Here's the text from the image:
 
-Interview Questions on UART:
-
+Interview Questions on UART:-=-==-=-=-=-=-=--=-=-=
 Q1. What are the Different pins of the Simple UART and List them?
 - Transmitter and REciver 
      in practical 
        *UART Tx :
-        --->Clock and Reset,Newd(1 Bit),din_tx[7:0]==> input
+        --->Clock and Reset,New(1 Bit),din_tx[7:0]==> input
         --->tx(1 bit),tx_done                      ==> output
        *UART Rx :
         --->Clock ,reset and Rx                    ==> input
@@ -486,24 +511,43 @@ Q2. What are the Application of UART?
 
 Q3. Define Bit rate and Baud Rate?
 - Bit Rate: The number of bits transmitted per second in a communication channel.
-- Baud Rate: The number of bits transmitted per second including parity bits ,satrt,stop..
+- Baud Rate: The number of bits transmitted per second including parity bits ,start,stop bits..
    > In UART, baud rate is often equal to bit rate, but it can differ in other communication protocols where multiple bits are encoded in a single symbol.
 
 Q4. What is the Significance of baud Rate in UART?
 - Baud rate : 9600 (It means that 9600 bits are transmitted per second).
   Baud rate : 2400 (It means that 2400 bits are transmitted per second).
 Baud rate is significant in UART because it determines the speed of data transmission between devices.
-           A higher baud rate allows for faster communication, but it also requires more precise timing and synchronization between the transmitter and receiver.
-          If the baud rate is too high for the devices to handle, it can lead to data loss or corruption. 
+        A higher baud rate allows for faster communication, but it also requires more precise timing and synchronization between the transmitter and receiver.
+        If the baud rate is too high for the devices to handle, it can lead to data loss or corruption. 
 
-Q5. Difference Between the Synchronous and Asynchronous Interface and where uart fits?
+Q5. Difference Between the Synchronous and Asynchronous Interface and where UART fits?
 - Synchronous Interface: 
+  - In a synchronous interface, data transmission is synchronized with a clock signal.
+  - Both the transmitter and receiver share a common clock, ensuring that data is sent and received at the same time intervals.
+  - Examples include SPI (Serial Peripheral Interface) and I2C (Inter-Integrated Circuit).
 -Asynchronous Interface:
+    - In an asynchronous interface, data transmission does not rely on a shared clock signal.
+    - Instead, it uses start bits, stop bits, and parity bits to frame the data and ensure proper synchronization.
+    - UART (Universal Asynchronous Receiver Transmitter) is a common example of an asynchronous interface.
+  ** UART fits into the asynchronous category because it transmits data without a shared clock signal, relying on framing bits for synchronization.
 
 Q6. What is the purpose of Start bit, Stop bit and Parity bits?
 - Start Bit: 
-  - The start bit signals the begi
+  - The start bit signals the begining of data transmission.
+-Stop Bit:
+    - The stop bit indicates the end of data transmission.
+- Parity Bit:
+  - The parity bit is an error detection mechanism that ensures the integrity of the transmitted data.
+  - It can be set to even or odd parity, depending on the number of 1's in the data.
+  - If the number of 1's is odd, the parity bit is set to 1 (odd parity); if even, it is set to 0 (even parity).
+  - This helps detect errors in data transmission by checking if the received data matches the expected parity.
+
 Q7. What is the use of UART FIFO?
+- UART FIFO (First In, First Out) is used to buffer data in the UART transmitter and receiver.
+  - It allows for efficient handling of data transmission and reception by storing multiple bytes of data in a queue.
+  - The FIFO helps prevent data loss during high-speed communication by temporarily holding data until it can be processed.
+  - It also allows the UART to handle bursts of data without requiring immediate processing, improving overall performance and reducing latency.
 
 Q8. What is the Maximum Baud Rate value?
 
@@ -531,9 +575,6 @@ Q19. What is the Significance / Importance of UART?
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 140625
 
-
-Here's the text from the image:
-
 I2C Protocol : Inter Integrated Circuit Protocol
 ---> Designed by the Philips Semiconductor in 1982.
 ---> Supports Multipoint Communication ( Between Multiple masters and Multiple Slaves)
@@ -541,7 +582,7 @@ I2C Protocol : Inter Integrated Circuit Protocol
 ---> I2C Is also Known as TWI ( Two Wired Interface )
 ---> One Master will Connect with Multiple Slaves / Multiple Masters Control the Multiple Slaves.
 
-Q1. Is I2C is Serail Interface / Parallel Interface?
+Q1. Is I2C is Serial Interface / Parallel Interface?
 Ans: Serial Interface
 
 Q2. I2C is Synchronous / Asynchronos Protocol ?
@@ -610,7 +651,7 @@ I2C supports both 7-bit and 10-bit addressing modes.
 
 **8-bit Transmission Format (for 7-bit addressing):**
 
-When transmitting an address, it's typically combined with the R/W' bit to form an 8-bit byte.
+When transmitting an address , it's typically combined with the R/W' bit to form an 8-bit byte.
 
 * `a7 a6 a5 a4 a3 a2 a1 a0` (This represents the 8-bit byte being transmitted)
     * `a7 a6 a5 a4 a3 a2 a1` represents the 7-bit device address.
@@ -624,8 +665,8 @@ When transmitting an address, it's typically combined with the R/W' bit to form 
 +-------------------+                                                                    +------------------+
 
             +-------+---------+-----+-----+----------+-----------+----------+-----------+-----+
-            | Start | Address | R/W | ACK | 8-bit   | ACK/NACK  | 8-bit    | ACK/NACK  | Stop|
-            | (1b)  | (7b)    |(1b) |/NACK|  Data   |  (1b)     |  Data    |  (1b)     |(1b) |
+            | Start | Address | R/W | ACK | 8-bit   | ACK/NACK  | 8-bit    | ACK/NACK  | Stop |
+            | (1b)  | (7b)    |(1b) |/NACK|  Data   |  (1b)     |  Data    |  (1b)     |(1b)  |
             +-------+---------+-----+-----+----------+-----------+----------+-----------+-----+
                 |        |      |      |       |          |          |           |         |
                 |        |      |      |       |          |          |           |         |
@@ -667,10 +708,8 @@ psel=1, penable=1, paddr=8'hAB, Pwrite=1, Pwdata=8'h12 and pready=0
 psel=1, penable=1, paddr=8'hAB, Pwrite=1, Pwdata=8'h12 and pready=1
 
 Q6. Why APB Protocol is called Simple Interface ?
-Ans:
+Ans: APB Protocol is called Simple Interface because it contains only 5 Signals (psel, penable, paddr, pwrite, pwdata) and it is easy to understand.
 APB Protocol Contains the Simple Signals Description.
-
-I
 
 Q7. What is the Condition for Slave Error in APB protocol ?
 Ans:
@@ -683,10 +722,10 @@ Clock Crossing ( Speed Match)
 
 Q9. What are called Response Signals and How they will Work ?
 Ans:
-pready =1 (Slave is Ready to Accept the Data from the Master)
-=0 (Slave is not Ready to Accept the Data From the Master)
+pready  =1 (Slave is Ready to Accept the Data from the Master)
+        =0 (Slave is not Ready to Accept the Data From the Master)
 pslverr =1 (Failure Transaction)
-=0 (Success Transaction)
+        =0 (Success Transaction)
 
 Q10. How APB Master will get the Response of the Slave ?
 Ans: By Using preadySignal
@@ -721,7 +760,7 @@ idle: psel=0 and penable=0
 setup: psel=1 and penable=0
 Access: psel=1 and penable=1
 
-Q16. Fine the kinfd of Operation Replicated from the following ?
+Q16. Fine the kind of Operation Replicated from the following ?
 A. (psel && penable && pwrite)=1 (Write Operation)
 B. (psel && penable && !pwrite)=1 (Read Operation)
 
@@ -737,6 +776,8 @@ Ans:
 ---> Low Throughput
 ---> Low Performance
 ---> Non Pipelined
+///////////////////////////////////////////////////////////////////////////////////////////////////
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 SPI Protocol:(Serial Peripheral Interconnect)
 
