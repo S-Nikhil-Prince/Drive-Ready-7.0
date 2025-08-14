@@ -1,3 +1,5 @@
+// Iship/Universal tb/design.v
+// This file contains the design code for various digital components.
 // DESIGN CODE
 //Rules
 // MODULE_SELECT=0 {"FOR GATES"}
