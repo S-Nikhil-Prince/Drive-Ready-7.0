@@ -26,6 +26,7 @@ endmodule
 output:
 Data=59
 //////////////////////////////////////////////
+
 "This" keyword usage -
 ------------------------
 1) when assigning function argument and object member and both have same name 
@@ -73,15 +74,15 @@ endclass
 module tb;
   vlsi v;
   initial begin
-    v=new(17,59,30); // Position based assigning
-    //v=new(.data(59),.data1(17),.data2(30)); //Name based assigning
+    v=new(17,59,30);                         //--Position based assigning
+    v=new(.data(59),.data1(17),.data2(30)); //--- Name based assigning
     $display("Data=%0d , Data1=%0d , Data2=%0d",v.data,v.data1,v.data2);
   end
 endmodule
 Output:
 ERROR VCP5248 "Cannot access local/protected member ""v.data"" from this scope." "testbench.sv" 17  55
 since it is a local parameter we cannot access it outside the class, thus the Error
-//////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 Nul Pointer Error:
  when using class in class :
@@ -103,10 +104,13 @@ module tb;
   initial begin 
     v=new();
     $display("data=%0d",v.d.data);
-    v.d.data=417;
+    v.d.data=417;           // CHANGING THE VALUE IN DRIVE READY CLASS USING THE VLSI CLASS.
     $display("data=%0d",v.d.data);
     v.d.data=430;
     $display("data=%0d",v.d.data);
   end
 endmodule
 Output:
+data=459
+data=417                  // DATA CHNANGED
+data=430
