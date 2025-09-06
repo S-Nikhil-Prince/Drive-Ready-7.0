@@ -38,9 +38,9 @@ class vlsi;
   bit[7:0]data1;
   shortint data2;
   function new (input int data=0,input bit [7:0]data1,input shortint data2);
-    this.data=data;  //object member = function argument
-    this.data1=data1;//there will be an errror while assigning since both have same name
-    this.data2=data2;//in this case we use "this" keyword
+    this.data=data;  //Object Member = Function argument
+    this.data1=data1;//There will be an errror while assigning since both have same name
+    this.data2=data2;//In this case we use "this" keyword
   endfunction
 endclass
 
@@ -84,7 +84,7 @@ ERROR VCP5248 "Cannot access local/protected member ""v.data"" from this scope."
 since it is a local parameter we cannot access it outside the class, thus the Error
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-Nul Pointer Error:
+Null Pointer Error:
  when using class in class :
  Avoided using Custoum Constructor:
  Program:
@@ -108,6 +108,7 @@ module tb;
     $display("data=%0d",v.d.data);
     v.d.data=430;
     $display("data=%0d",v.d.data);
+    
   end
 endmodule
 Output:
