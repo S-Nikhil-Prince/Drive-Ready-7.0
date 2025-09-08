@@ -82,30 +82,78 @@ Data=100
 2) Shallow Copying:
    Analogy : Making a photo copy of the house and giving it to your friend.
     Here both the variables point to different memory locations but have same data.
+    So non object will be stored in differen memory locations.
+    but if we try to copy object handle they will point to same memory location.
+     Here both the variables point to different memory locations but have same data.
 Program:
+class driveready;
+  int count;
+endclass
 class vlsi;
-  int data;
-  function void copy (input vlsi obj);
-    this.data=obj.data; //Shallow Copying
+  int a;
+  int b;
+  driveready d=new();
+  function void print();
+    $display("a=%0d",a);
+    $display("b=%0d",b);
+    $display("count=%0d",d);// Since handle is a type of grouped data %0d will print handle name.
+    $display("count=%0p",d);
   endfunction
 endclass
-module tb;
+module top;
   vlsi v1,v2;
   initial begin
     v1=new();
-    v1.data=59;
     v2=new();
-    v2.copy(v1); //Shallow Copying
-    $display("Data=%0d",v2.data);
-    v1.data=100;
-    $display("Data=%0d",v2.data);
+    v2.a=25;
+    v2.b=35;
+    v2.d.count=100;
+    $display("Set a,b values in v2 and copy them in v1");
+    v1=new v2;
+    $display("Printing v1");
+    v1.print();
+    $display("Printing v2");
+    v2.print();
+    $display("Chnage vlues of a,b in v2 and check for change in v1");
+    v2.a=45;
+    v2.b=55;
+    v2.d.count=200;
+    $display("Printing v1");
+    v1.print();
+    $display("Printing v2");
+    v2.print();
+    $display("as count is an object variable, changes made to count in v2 are updates to count in v1 while using shallow copy  ; hence we go to deep copy method");
   end
 endmodule
-Output:
-Data=59
-Data=59
-//Here both v1 and v2 point to different memory locations.
+output:
+# KERNEL: Set a,b values in v2 and copy them in v1
+# KERNEL: Printing v1
+# KERNEL: a=25
+# KERNEL: b=35
+# KERNEL: count=140024673439292
+# KERNEL: count=100
+# KERNEL: Printing v2
+# KERNEL: a=25
+# KERNEL: b=35
+# KERNEL: count=140024673439292
+# KERNEL: count=100
+# KERNEL: Change vlues of a,b in v2 and check for change in v1
+# KERNEL: Printing v1
+# KERNEL: a=25
+# KERNEL: b=35
+# KERNEL: count=140024673439292
+# KERNEL: count=200
+# KERNEL: Printing v2
+# KERNEL: a=45
+# KERNEL: b=55
+# KERNEL: count=140024673439292
+# KERNEL: count=200
+//Here both v1 and v2 point to different memory locations since they are non objects.
 //So changes in v1 are not reflected in v2.
+//But count is an object variable, changes made to count in v2 are updates to count in v1 while using shallow copy .
+// Hence we go to deep copy method
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
 3) Deep Copying:
     Analogy : Making a photo copy of the house and giving it to your friend along with all the furniture inside.
      Here both the variables point to different memory locations but have same data.
@@ -134,101 +182,3 @@ Data=59
 //Here both v1 and v2 point to different memory locations.
 //So changes in v1 are not reflected in v2.
 \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-Casting:
-   Analogy : Melt the metal and put into different shapes.
-
-*Converting one Variable into the Another Variable Format*
-** Casting can only be done for Singular Variables.**
---> int a; // Singular Variable 
---> int b[3:0]; // Non_ Singular
-
-Variable can be a Object / Non_ Object
-
-Non Object Casting:
-
-**Non Object: Data Type is Known at the time of Compile. 
-**Hence this type of Casting is called Static Casting.
---> Static Casting Does not use the $cast .
-EX: 
-module top;
-  int a;
-  byte unsigned b;
-  initial begin
-    a=-30;
-    $display("a=%0d,b=%0d",a,b);
-    b=a;
-    $display("a=%0d,b=%0d",a,b);
-    b=byte'(a);
-    $display("a=%0d,b=%0d",a,b);
-  end
-endmodule
-Output:
-a=-30,b=0
-a=-30,b=226
-a=-30,b=226
-///// Here byte' Performs the Static Casting./////
-
-“Convert the value of a (an int, 32-bit signed) into a byte (8-bit signed), then assign it to b.”
-
---Object Casting:--
-
-** Object : Data Type is Decided at the Run time.
---> The Object can be of any class type( it can be base / Derived class). Hence it is called the Dynamic Casting.
-
-Note: 
-	No Inheritance → $cast fails
-	With Inheritance → $cast works
-
---> It is mainly used in class inheritance when you want to safely convert a base-class handle into a derived-class handle.
-program:
-class drive_ready;
-  byte unsigned o_count; 
-endclass
-
-class vlsi;
-  byte signed s_count;
-endclass
-
-module top;
-  vlsi v = new();
-  drive_ready d = new();
-
-  initial begin
-    v.s_count = - 20; // Assign value to s_count
-    $cast(v,d); //System Task
-    //f=$cast ( pkt,g_pkt) ; // System Function
-    d.o_count = v.s_count; // Assign value directly
-    $display("vlsi count =%0d,drive ready count= %0d",v.s_count, d.o_count);
-  end
-endmodule
-Output:
-vlsi count =-20,drive ready count= 236
-///// Here $cast Performs the Dynamic Casting./////
-
-=-=-= "$cast" Possibilities =-=-= 
-
-eth_pkt pkt1, pkt2;
-eth_good_pkt  good_pkt;
-eth_bad_pkt   bad_pkt;
-
-$cast(good_pkt, pkt1)
---> Not Possible
---> Above usage is as a  task , we get the run time rror.
-
-$cast (pkt1,good_pkt)
---> Possible 
-
-$cast (good_pkt, bad_pkt)
---> Not Possible, since they are not directly realted through inheritance
-
-Conclusion: 
-	$cast → Type Conversion (runtime check)
-
-=> Purpose: Change a handle type (Base ↔ Derived).
-
-=> Does not copy the object, only reinterprets the handle safely
-
-then we use "$clone"
-
-$clone → Making a new copy (duplicate object)
-Use $clone when you care about getting your own independent copy
