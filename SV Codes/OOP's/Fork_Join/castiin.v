@@ -95,4 +95,4 @@ Conclusion:
 then we use "$clone"
 
 $clone → Making a new copy (duplicate object)
-Use $clone when you care about getting your own independent copy  
+Use $clone when you care about getting your own independent copy   

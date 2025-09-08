@@ -158,27 +158,96 @@ output:
     Analogy : Making a photo copy of the house and giving it to your friend along with all the furniture inside.
      Here both the variables point to different memory locations but have same data.
 Program:
-class vlsi;
+case 1: //Sending destination:
+class driveready;
   int data;
-  function void copy (input vlsi obj);
-    this.data=obj.data; //Shallow Copying
+endclass
+
+class vlsi;
+  int a,b;
+  driveready d = new();
+  function void print();
+    $display("a=%0d ,b=%0d , data=%0p",a,b,d);
+  endfunction
+  
+  function void copy(output vlsi v);
+    v=new();
+    v.a=this.a;
+    v.b=this.b;
+    v.d.data=this.d.data;
   endfunction
 endclass
+
 module tb;
   vlsi v1,v2;
   initial begin
     v1=new();
-    v1.data=59;
     v2=new();
-    v2.copy(v1); //Deep Copying
-    $display("Data=%0d",v2.data);
-    v1.data=100;
-    $display("Data=%0d",v2.data);
-  end
+    v2.a=10;
+    v2.b=20;
+    v2.d.data=500;
+    v2.copy(v1);
+    $write("v2 ");
+    v2.print();
+    $write("v1 ");
+    v1.print();
+    v2.a=30;
+    v2.b=40;
+    v2.d.data=700;
+    $write("v2 ");
+    v2.print();
+    $write("v1 ");
+    v1.print();
+  end 
+endmodule
+case 2: //Sending Source:
+class driveready;
+  int data;
+endclass
+
+class vlsi;
+  int a,b;
+  driveready d = new();
+  function void print();
+    $display("a=%0d ,b=%0d , data=%0p",a,b,d);
+  endfunction
+  
+  function void copy (vlsi v);
+//     v=new();
+    this.a=v.a;
+    this.b=v.b;
+    this.d.data=v.d.data;
+  endfunction
+endclass
+
+module tb;
+  vlsi v1,v2;
+  initial begin
+    v1=new();
+    v2=new();
+    v2.a=10;
+    v2.b=20;
+    v2.d.data=500;
+    v1.copy(v2);
+    $write("v2 ");
+    v2.print();
+    $write("v1 ");
+    v1.print();
+    v2.a=30;
+    v2.b=40;
+    v2.d.data=700;
+    $write("v2 ");
+    v2.print();
+    $write("v1 ");
+    v1.print();
+  end 
 endmodule
 Output:
-Data=59
-Data=59
+# KERNEL: v2 a=10 ,b=20 , data=500
+# KERNEL: v1 a=10 ,b=20 , data=500
+# KERNEL: v2 a=30 ,b=40 , data=700
+# KERNEL: v1 a=10 ,b=20 , data=500
+
 //Here both v1 and v2 point to different memory locations.
 //So changes in v1 are not reflected in v2.
 \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
