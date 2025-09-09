@@ -23,9 +23,9 @@ module top;
   initial begin
     a=-30;
     $display("a=%0d,b=%0d",a,b);
-    b=a;
+    b=a;        //Implicit Conversion-> Used with simple codes
     $display("a=%0d,b=%0d",a,b);
-    b=byte'(a);
+    b=byte'(a); //Explict Conversion -> Used with complex codes
     $display("a=%0d,b=%0d",a,b);
   end
 endmodule
