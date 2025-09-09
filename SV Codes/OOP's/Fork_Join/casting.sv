@@ -74,30 +74,41 @@ vlsi count =-20,drive ready count= 236
 ///// Here $cast Performs the Dynamic Casting./////
 
 =-=-= "$cast" Possibilities =-=-= 
+        
+                  Ethernet Packet
+                         |
+           ----------------------------------
+          |                                  |
+       Ethernet Good Packet         Ethernet Bad Packet
+=-=-System Task=-=
+$cast(eth_pkt,g_pkt); //Up Casting   : Success
+$cast(eth_pkt,b_pkt); //Up Casting   : Success
+$cast(g_pkt,eth_pkt); //UnSuccessfull: Failure
+$cast(b_pkt,eth_pkt); //UnSuccessfull: Failure
 
-eth_pkt pkt1, pkt2;
-eth_good_pkt  good_pkt;
-eth_bad_pkt   bad_pkt;
+-=-System Function=-=
+f=$cast ( pkt,g_pkt) ; //Up Casting   : Success
+f=$cast ( pkt,b_pkt) ; //Up Casting   : Success
+f=$cast ( g_pkt,pkt) ; //UnSuccessfull: Failure
+f=$cast ( b_pkt,pkt) ; //UnSuccessfull: Failure
 
-$cast(good_pkt, pkt1)
---> Not Possible
---> Above usage is as a  task , we get the run time rror.
-
-$cast (pkt1,good_pkt)
---> Possible 
-
-$cast (good_pkt, bad_pkt)
---> Not Possible, since they are not directly realted through inheritance
-
-Conclusion: 
-	$cast → Type Conversion (runtime check)
-
+Difference between System Task and System Function:
+ _______________________________________________________
+|System Task              |        System Function      |
+|-------------------------|-----------------------------|
+|Does not return a value  |   Returns a value           |
+|Used for Dynamic Casting |   Used for Dynamic Casting  |
+|No error if successful   |   Returns 1 if successful   |
+|error if unsuccesfull    |   Returns 0 if unsuccessful |
++-------------------------------------------------------+
+ 
+Note:
 => Purpose: Change a handle type (Base ↔ Derived).
 
 => Does not copy the object, only reinterprets the handle safely
 
 then we use "$clone"
-/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
 $clone → Making a new copy (duplicate object)
-Use $clone when you care about getting your own independent copy   
+Use $clone when you want independent copy of the object.  
