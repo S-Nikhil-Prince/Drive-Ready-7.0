@@ -35,7 +35,7 @@ a=-30,b=226
 a=-30,b=226
 ///// Here byte' Performs the Static Casting./////
 
-“Convert the value of a (an int, 32-bit signed) into a byte (8-bit signed), then assign it to b.”
+“Convert the value of a (an int, 32-bit signed) into a byte (8-bit signed), then assign it to b.”
 
 --Object Casting or Dynamic Casting:--
 
