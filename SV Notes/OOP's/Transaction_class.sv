@@ -1,4 +1,4 @@
-1)What is a transaction ?
+ 1)What is a transaction ?
 ->exchange of information between two entities is called a transaction.
 
 2)where are transactions used in SV TB Architecture?
@@ -75,8 +75,6 @@ module tb;
   initial begin
     tx=new();
     tx.print();
-    tx.randomize();
-    tx.print();
     repeat(10) begin
       tx.randomize();
       tx.print();
@@ -96,7 +94,7 @@ Output:
 # KERNEL: wr_rd=1 ,addr=32 ,data =2b5fa342 ,sel=2 |
 # KERNEL: wr_rd=0 ,addr=6b ,data =22b46086 ,sel=4 |
 # KERNEL: wr_rd=1 ,addr=4  ,data =e153487c ,sel=2 |
-# KERNEL: wr_rd=0 ,addr=ec ,data =c6f63eee ,sel=0 |
+# KERNEL: wr_rd=0 ,addr=ec ,data =c6f63eee ,sel=0 | 
 ---------------------------------------------------
 ->Remove rand and manually enter any value to fix the value of that variable.
 ->Example if you remove rand of write and put value 1. then it will continously write.
