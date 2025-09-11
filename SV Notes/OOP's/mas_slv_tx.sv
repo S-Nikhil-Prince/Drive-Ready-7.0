@@ -81,17 +81,19 @@ module tb;
   end
 endmodule
 Output:
-Priting initial Values
-MASTER: wr_rd=0 | sel=0 | addr=0 | data=0
-TX    : wr_rd=0 | sel=0 | addr=0 | data=0
-SLAVE : wr_rd=0 | sel=0 | addr=0 | data=0
-Randomizing Master
-MASTER: wr_rd=1 | sel=4 | addr=5a | data=12345678
-Sending Values Into Transmisson Class 
-Printing Transmisson Class Values
-MASTER: wr_rd=1 | sel=4 | addr=5a | data=12345678
-TX    : wr_rd=1 | sel=4 | addr=5a | data=12345678
-Recieving Values from Transmission Class into Slave
-Printing Salve Values
-TX    : wr_rd=1 | sel=4 | addr=5a | data=12345678
-SLAVE : wr_rd=1 | sel=4 | addr=5a | data=12345678
+_____________________________________________________________
+Priting initial Values                                      |
+MASTER: wr_rd=0 | sel=0 | addr=0 | data=0                   |
+TX    : wr_rd=0 | sel=0 | addr=0 | data=0                   |
+SLAVE : wr_rd=0 | sel=0 | addr=0 | data=0                   |
+Randomizing Master                                          |   
+MASTER: wr_rd=1 | sel=4 | addr=5a | data=12345678           |
+Sending Values Into Transmisson Class                       |    
+Printing Transmisson Class Values                           |
+MASTER: wr_rd=1 | sel=4 | addr=5a | data=12345678           |
+TX    : wr_rd=1 | sel=4 | addr=5a | data=12345678           |    
+Recieving Values from Transmission Class into Slave         |
+Printing Salve Values                                       |
+TX    : wr_rd=1 | sel=4 | addr=5a | data=12345678           |   
+SLAVE : wr_rd=1 | sel=4 | addr=5a | data=12345678           |
+------------------------------------------------------------
