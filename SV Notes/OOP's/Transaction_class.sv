@@ -108,4 +108,4 @@ Output:
 
 Important note *.*3
 ->when we use 2 or more constraints it will lead to constraint conflict.
-->and the output will be shown as "randomization failed due to constraint conflict".
+->and the output will be shown as "randomization failed due to constraint conflict".  
