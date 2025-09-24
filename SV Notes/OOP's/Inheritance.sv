@@ -33,8 +33,8 @@ endmodule
 
 2) Multi_ Level Inheritance: 
 		
-		          parent class  
-		                |
+		              parent class  
+		                     |
 		        ----------------------------
 		        |	                         |
 	        child (c)	               child1 (c1)
