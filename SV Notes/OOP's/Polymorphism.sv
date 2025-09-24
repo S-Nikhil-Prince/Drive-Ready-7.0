@@ -65,6 +65,52 @@ virtual function is used to achieve polymorphism.
     ->but if we use virtual function then the derived class function is called instead of base class function.
     ->we can achieve polymorphism by using virtual function.
 
+some times even if we use virtual function polymorphism is not achieved.
+    ->this is because if we dont define any method in any of the derived class.
+    ->then the base class function will be executed.
+       ->Just like Polymorphism without virtual function.
+program:
+class remote;
+  virtual function void presspower();
+    $display("Default : Error");
+  endfunction
+endclass
+ 
+class fan extends remote;
+  function void presspower();
+    $display("Fan is ON/OFF");
+  endfunction
+endclass
+
+class ac extends remote;
+  function void presspower();
+    $display("AC is ON/OFF");
+  endfunction
+endclass
+
+class light extends remote;
+  /*function void presspower();
+    $display("LIGHT is ON/OFF");
+  endfunction*/
+endclass
+
+module tb;
+  remote device[3];
+  initial begin
+    device[0]=fan::new();
+    device[1]=ac::new();
+    device[2]=light::new();
+    foreach(device[i]) device[i].presspower();
+  end
+endmodule
+output:
+# KERNEL: Fan is ON/OFF
+# KERNEL: AC is ON/OFF
+# KERNEL: Default : Error
+here the light class method is not defined.
+so the base class method is executed.
+-=-=-=-==-=-=-=-==-=-=-=-==-=-=-=-==-=-=-=-==-=-=-=-==-
+
 
 
 =-=-=-=--=-=-=-==-=-=-=-=-=-=-=-=-=-
