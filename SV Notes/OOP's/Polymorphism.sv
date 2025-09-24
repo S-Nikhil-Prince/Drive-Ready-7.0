@@ -147,3 +147,64 @@ endmodule
 Output:
 # KERNEL: a=10,b=20
 --------------------------------------------------------------------------------
+
+Virtual class and Pure virtual function
+    -> Finally considering all the problems we have come so for
+program:
+virtual class remote;
+ pure virtual function void presspower();
+    
+endclass
+ 
+class fan extends remote;
+  function void presspower();
+    $display("Fan is ON/OFF");
+  endfunction
+endclass
+
+class ac extends remote;
+  function void presspower();
+    $display("AC is ON/OFF");
+  endfunction
+endclass
+
+class light extends remote;
+  function void presspower();
+    $display("LIGHT is ON/OFF");
+  endfunction
+endclass
+
+module tb;
+  remote device[3];
+  initial begin
+    device[0]=fan::new();
+    device[1]=ac::new();
+    device[2]=light::new();
+    foreach(device[i]) device[i].presspower();
+  end
+endmodule
+Output:
+---------------------------
+# KERNEL: Fan is ON/OFF
+# KERNEL: AC is ON/OFF
+# KERNEL: LIGHT is ON/OFF
+---------------------------
+
+
+--------------------------------------------------------------------------------
+Summary of the topic 
+    if we use polymorphism directly then the base class function will point it self.
+       ->so the smae functuion will be executed.
+    so we use virtual function to achieve polymorphism.
+       ->here the base class function will point the derived class function.
+         ->so the derived class function will be executed.
+    but in some cases.
+        if we dont define any method in any of the derived class.
+        then the base class function will be executed.
+         ->Just like Polymorphism without virtual function.
+    so to avoid this we use pure virtual function.
+    ->here the pure virtual function should be defined in all the derived classes.
+    ->we should not define any method in the pure virtual class.
+        -> now if we miss method in the derived class.
+        ->then it will give error.
+--------------------------------------------------------------------------------
