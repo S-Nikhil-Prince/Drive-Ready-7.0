@@ -56,3 +56,4 @@ module mux_4x1(
     endcase
   end
 endmodule
+nice
