@@ -60,3 +60,8 @@ module tb;
         $display("none of the conditions are true");
   end
 endmodule
+
+Similarity :
+-> Unique if and Priority if give error message when none of the statements are true and there is no else statement.
+Difference :
+-> Unique if and Unique0 if executes the statements randomly whereas Priority if executes the statements in a priority order.
