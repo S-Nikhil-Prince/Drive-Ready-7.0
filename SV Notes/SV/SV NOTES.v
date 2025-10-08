@@ -846,3 +846,7 @@ CPOL CPHA Mode sclk Posedge/ Negedge
 0 1 mode 1 0 2nd Negedge
 1 0 mode 2 1 1st Negedge
 1 1 mode 3 1 2nd Posedge
+
+
+
+

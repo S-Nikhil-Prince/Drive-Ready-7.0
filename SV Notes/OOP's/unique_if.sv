@@ -20,9 +20,9 @@ endmodule
 
 Unique0 if:
     ->here all the statemnts are executed randomly. opr not in an order
-    ->if one or more statements are true then the first true statement will be printed.
+    ->if one or more statements are true then it will give an error message.
     ->if none of the statemnts are true then the else statement will be printed
-    ->if none of the statements are turn and there is no else statement then error will be printed.
+    ->if none of the statements are turn and there is no else statement then error will not be printed.
 
 module tb;
   initial begin
