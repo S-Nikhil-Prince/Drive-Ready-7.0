@@ -102,4 +102,34 @@ Modes Of Constraints:
             child.randc(0);
             child.randc(1);
             
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Types of constraints:
+    1) Inside COnstraint :
+    program:
 
+class sample;
+  rand int x;
+  constraint ci{ x inside {[20:35]}; }
+endclass
+
+module top;
+  sample s;
+  initial begin
+    s=new();
+    repeat (10) begin
+      assert (s.randomize());
+      $display("x=%0d",s.x);
+    end
+  end
+endmodule
+Output:
+# KERNEL: x=24
+# KERNEL: x=24
+# KERNEL: x=34
+# KERNEL: x=32
+# KERNEL: x=23
+# KERNEL: x=26
+# KERNEL: x=35
+# KERNEL: x=30
+# KERNEL: x=27
+# KERNEL: x=35
