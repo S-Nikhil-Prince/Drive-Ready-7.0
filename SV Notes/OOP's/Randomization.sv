@@ -184,6 +184,49 @@ Types of constraints:
         example 
             constraint c1 {solve a; before b;}
 
+
+    7) Unique Constraint
+        -> it is used to generate unique values to the variable.
+        example:
+            constraint c1 {unique {[1:40]};}
+
+        program (static array)
+        class sample;
+            //bit [7:0]a;
+            rand bit [7:0] arrays[5];
+            constraint cu { unique{arrays};}
+        endclass
+
+        module tb;
+        sample s = new();
+        initial begin
+            //repeat(5) begin
+            assert(s.randomize);
+            foreach (s.arrays[i])
+            $display("array[%0d]=%0d,",i,s.arrays[i]);
+            //end
+        end
+        endmodule
+
+        program (dynamic array)
+        class sample;
+        //bit [7:0]a;
+        rand bit [7:0] arrays[];
+        constraint cu { unique{arrays};arrays.size == 5 ;}
+        //constraint cu {arrays inside {[35:50]};}
+        endclass
+
+        module tb;
+        sample s = new();
+        initial begin
+            //repeat(5) begin
+            assert(s.randomize);
+            foreach (s.arrays[i])
+            $display("array[%0d]=%0d,",i,s.arrays[i]);
+            //end
+        end
+        endmodule
+
 Modes Of Constraints:
     constraint mode (0); //disable mode
     constraint mode (1); //enable mode
