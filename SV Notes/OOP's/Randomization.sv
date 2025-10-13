@@ -47,7 +47,75 @@ Types of constraints:
             constraint c2{
                 for each (arr[i])
                 arr inside{1,2,3,4,5};
-            }
+                }
+                -=-=-=-=
+                program:
+                class sample;
+                  rand int x;
+                  constraint ci{ x inside {[20:35]}; }
+                endclass
+                
+                module top;
+                  sample s;
+                  initial begin
+                    s=new();
+                    repeat (10) begin
+                      assert (s.randomize());
+                      $display("x=%0d",s.x);
+                    end
+                  end
+                endmodule
+                Output:
+                # KERNEL: x=24
+                # KERNEL: x=24
+                # KERNEL: x=34
+                # KERNEL: x=32
+                # KERNEL: x=23
+                # KERNEL: x=26
+                # KERNEL: x=35
+                # KERNEL: x=30
+                # KERNEL: x=27
+                # KERNEL: x=35
+                
+                combination of ranges :
+                `define starting_range 60
+                `define ending_range 80
+                
+                class sample # (parameter int p1 = 90, int p2 = 110);
+                  rand bit[7:0] a;
+                  rand bit[7:0] b;
+                  rand bit[7:0] c;
+                  rand bit[7:0] d;
+                  rand bit[7:0] e;
+                  constraint c1 { a inside {[20:35]};}
+                  constraint c2 { b inside {5,9};}
+                  constraint c3 { c inside {[32:47],60,70};}
+                  constraint c4 { d inside {[`starting_range : `ending_range]};}
+                  constraint c5 { e inside {[p1:p2]};}
+                endclass
+                
+                module top;
+                  sample s;
+                  initial begin
+                    s=new();
+                    repeat (10) begin
+                      assert (s.randomize());
+                      $display("a=%0d,b=%0d,c=%0d,d=%0d,e=%0d",s.a,s.b,s.c,s.d,s.e);
+                    end
+                  end
+                endmodule
+                output:
+                # KERNEL: a=24,b=9,c=45,d=64,e=100
+                # KERNEL: a=24,b=5,c=36,d=68,e=95
+                # KERNEL: a=32,b=5,c=45,d=69,e=103
+                # KERNEL: a=32,b=5,c=42,d=63,e=103
+                # KERNEL: a=22,b=5,c=35,d=80,e=107
+                # KERNEL: a=24,b=5,c=40,d=65,e=108
+                # KERNEL: a=22,b=5,c=35,d=74,e=91
+                # KERNEL: a=35,b=5,c=39,d=79,e=90
+                # KERNEL: a=30,b=5,c=32,d=64,e=102
+                # KERNEL: a=31,b=5,c=45,d=79,e=102
+                -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
     3)Soft Constraints
         ->to overwrite the constraint we use the soft keyword
@@ -76,6 +144,34 @@ Types of constraints:
             example:
                 constraint c1{[a.dist{10:30==200],[20:50==500]};}
                 from here 10,11,12.....30 each value gets weighted with 200
+            =-=-=-=-=-=-=-=-=-
+            Program:
+            class sample;
+            rand int a;
+            constraint cd {a dist { [100:200]:/2,400:/3,600:/5};} 
+            endclass
+
+            module tb;
+            sample s = new();
+            initial begin
+                repeat (10) begin
+                assert (s.randomize());
+                $display("a=%0d",s.a);
+                end
+            end
+            endmodule
+            output:
+            # KERNEL: a=400
+            # KERNEL: a=600
+            # KERNEL: a=600
+            # KERNEL: a=600
+            # KERNEL: a=600
+            # KERNEL: a=600
+            # KERNEL: a=600
+            # KERNEL: a=600
+            # KERNEL: a=149
+            # KERNEL: a=600
+            =-=-=-=-=-=-=-=-=-=-=-
 
     5)Conditional Constraints
         -> the implication operator can be used to declare conditional relation between 2 variables.
@@ -103,74 +199,6 @@ Modes Of Constraints:
             child.randc(1);
             
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-Types of constraints:
-    1) Inside COnstraint :
-    program:
-
-class sample;
-  rand int x;
-  constraint ci{ x inside {[20:35]}; }
-endclass
-
-module top;
-  sample s;
-  initial begin
-    s=new();
-    repeat (10) begin
-      assert (s.randomize());
-      $display("x=%0d",s.x);
-    end
-  end
-endmodule
-Output:
-# KERNEL: x=24
-# KERNEL: x=24
-# KERNEL: x=34
-# KERNEL: x=32
-# KERNEL: x=23
-# KERNEL: x=26
-# KERNEL: x=35
-# KERNEL: x=30
-# KERNEL: x=27
-# KERNEL: x=35
-
-combination of ranges :
-`define starting_range 60
-`define ending_range 80
-
-class sample # (parameter int p1 = 90, int p2 = 110);
-  rand bit[7:0] a;
-  rand bit[7:0] b;
-  rand bit[7:0] c;
-  rand bit[7:0] d;
-  rand bit[7:0] e;
-  constraint c1 { a inside {[20:35]};}
-  constraint c2 { b inside {5,9};}
-  constraint c3 { c inside {[32:47],60,70};}
-  constraint c4 { d inside {[`starting_range : `ending_range]};}
-  constraint c5 { e inside {[p1:p2]};}
-endclass
-
-module top;
-  sample s;
-  initial begin
-    s=new();
-    repeat (10) begin
-      assert (s.randomize());
-      $display("a=%0d,b=%0d,c=%0d,d=%0d,e=%0d",s.a,s.b,s.c,s.d,s.e);
-    end
-  end
-endmodule
-output:
-# KERNEL: a=24,b=9,c=45,d=64,e=100
-# KERNEL: a=24,b=5,c=36,d=68,e=95
-# KERNEL: a=32,b=5,c=45,d=69,e=103
-# KERNEL: a=32,b=5,c=42,d=63,e=103
-# KERNEL: a=22,b=5,c=35,d=80,e=107
-# KERNEL: a=24,b=5,c=40,d=65,e=108
-# KERNEL: a=22,b=5,c=35,d=74,e=91
-# KERNEL: a=35,b=5,c=39,d=79,e=90
-# KERNEL: a=30,b=5,c=32,d=64,e=102
-# KERNEL: a=31,b=5,c=45,d=79,e=102
 
 
+2) Distributed Constraint:
