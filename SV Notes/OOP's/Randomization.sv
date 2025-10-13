@@ -133,3 +133,44 @@ Output:
 # KERNEL: x=30
 # KERNEL: x=27
 # KERNEL: x=35
+
+combination of ranges :
+`define starting_range 60
+`define ending_range 80
+
+class sample # (parameter int p1 = 90, int p2 = 110);
+  rand bit[7:0] a;
+  rand bit[7:0] b;
+  rand bit[7:0] c;
+  rand bit[7:0] d;
+  rand bit[7:0] e;
+  constraint c1 { a inside {[20:35]};}
+  constraint c2 { b inside {5,9};}
+  constraint c3 { c inside {[32:47],60,70};}
+  constraint c4 { d inside {[`starting_range : `ending_range]};}
+  constraint c5 { e inside {[p1:p2]};}
+endclass
+
+module top;
+  sample s;
+  initial begin
+    s=new();
+    repeat (10) begin
+      assert (s.randomize());
+      $display("a=%0d,b=%0d,c=%0d,d=%0d,e=%0d",s.a,s.b,s.c,s.d,s.e);
+    end
+  end
+endmodule
+output:
+# KERNEL: a=24,b=9,c=45,d=64,e=100
+# KERNEL: a=24,b=5,c=36,d=68,e=95
+# KERNEL: a=32,b=5,c=45,d=69,e=103
+# KERNEL: a=32,b=5,c=42,d=63,e=103
+# KERNEL: a=22,b=5,c=35,d=80,e=107
+# KERNEL: a=24,b=5,c=40,d=65,e=108
+# KERNEL: a=22,b=5,c=35,d=74,e=91
+# KERNEL: a=35,b=5,c=39,d=79,e=90
+# KERNEL: a=30,b=5,c=32,d=64,e=102
+# KERNEL: a=31,b=5,c=45,d=79,e=102
+
+
