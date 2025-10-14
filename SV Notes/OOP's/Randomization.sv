@@ -322,6 +322,57 @@ Types of constraints:
         endmodule
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Example:
+program:
+class sample;
+rand bit [7:0] a,b,c;
+constraint c1 {a-b-c== 20;}
+endclass
+
+module tb;
+    sample s= new();
+    initial begin
+    assert(s.randomize());
+    $display("a=%0d,b=%0d,c=%0d",s.a,s.b,s.c);
+    assert(s.randomize());
+    $display("a=%0d,b=%0d,c=%0d",s.a,s.b,s.c);
+    end
+endmodule
+output:
+# KERNEL: a=39,b=10,c=9
+# KERNEL: a=45,b=15,c=10  // output is randomized such that a-b-c=20
+// now what if i want to fix value a to 100 and then randomize such that 100-b-c=20
+
+program:
+class sample;
+rand bit [7:0] a,b,c;
+constraint c1 {a-b-c== 20;}
+endclass
+
+module tb;
+    sample s= new();
+    initial begin
+    assert(s.randomize());
+    $display("a=%0d,b=%0d,c=%0d",s.a,s.b,s.c," a-b-c = 20");
+    s.a=100;
+    s.a.rand_mode(0);// a is disabled
+    assert(s.randomize());
+    $display("a=%0d,b=%0d,c=%0d",s.a,s.b,s.c," a is fixed");
+    s.a.rand_mode(1);// a is enabled
+    assert(s.randomize());
+    $display("a=%0d,b=%0d,c=%0d",s.a,s.b,s.c," a is enabled again");
+    s.rand_mode(0); // randomization of class sample is disabled
+    assert(s.randomize());
+    $display("a=%0d,b=%0d,c=%0d",s.a,s.b,s.c," Randomization is disabled");
+    s.rand_mode(1); // randomization of class sample is enabled again
+    assert(s.randomize());
+    $display("a=%0d,b=%0d,c=%0d",s.a,s.b,s.c," randomization is enabled again");
+    end
+endmodule
+
+
+
 Modes Of Constraints:
 
 constraint mode (0); //disable mode
