@@ -321,21 +321,18 @@ Types of constraints:
         end
         endmodule
 
-Modes Of Constraints:
-    constraint mode (0); //disable mode
-    constraint mode (1); //enable mode
-    
-    Example:
-            parent.rand(0); 
-            parent.rand(1);
-            child.rand(0);
-            child.rand(1);
-            parent.randc(0); 
-            parent.randc(1);
-            child.randc(0);
-            child.randc(1);
-            
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Modes Of Constraints:
 
+constraint mode (0); //disable mode
+constraint mode (1); //enable mode
 
-2) Distributed Constraint:
+Example:
+        parent.rand(0); 
+        parent.rand(1);
+        child.rand(0);
+        child.rand(1);
+        parent.randc(0); 
+        parent.randc(1);
+        child.randc(0);
+        child.randc(1);
