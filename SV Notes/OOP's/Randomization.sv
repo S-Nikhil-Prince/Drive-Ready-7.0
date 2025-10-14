@@ -191,7 +191,7 @@ Types of constraints:
         -> distributed operator is ":="
             -> it is used to assign the specified weight to the item.
             example:
-                constraint c1{[a.dist{10:30==200],[20:50==500]};}
+                constraint c1{[a.dist{[10:30==200],[20:50==500]};}
                 from here 10,11,12.....30 each value gets weighted with 200
             =-=-=-=-=-=-=-=-=-
             Program:
@@ -228,16 +228,43 @@ Types of constraints:
         -> it is placed in between expression and constraint.
         Syntax:
             constraint constraint_name/identifier {expression -> {constraint_select};} 
+
+        program:
+        class sample;
+        rand bit [7:0]a,b;
+        constraint c1 {
+        //     if (a==1)
+        //       b==1;
+        //     else
+        //       b==0;
+            //or we can also use implication operator
+            a==1 -> b==1;
+            a==0 -> b==0;
+        }
+        endclass
+
+        module tb;
+        sample s = new();
+        initial begin
+            assert(s.randomize());
+            $display("a=%0d,b=%0d",s.a,s.b);
+            assert(s.randomize() with {a==1;});
+            $display("a=%0d,b=%0d",s.a,s.b);
+            assert(s.randomize() with {a==0;});
+            $display("a=%0d,b=%0d",s.a,s.b);
+        end
+        endmodule
+        =-=-=-=-=-=-=-=-=-=-=-=-=-=-
             
     6) Solve-Before Constraint
-        example 
-            constraint c1 {solve a; before b;}
+        example:
+            constraint c1 {solve a before b}
 
         program:
         class sample;
         rand bit [7:0]a,b;
         constraint c1 {solve a before b;}
-        constraint c2 {b== a+15;}
+        constraint c2 {b == a+15;}
         endclass
 
         module tb;
