@@ -246,4 +246,22 @@ Modes Of Constraints:
 
 2) Distributed Constraint:
 
+class vlsi;
+  rand bit [7:0] arr [int]; 
+  constraint cu {unique {arr};}
+endclass
 
+module tb;
+  vlsi v=new();
+  initial begin
+    s.arr[10]=0;
+    s.arr[20]=0;
+    s.arr[30]=0;
+    s.arr[40]=0;
+    s.arr[50]=0;
+    //repeat(5)begin
+    assert(v.randomize());
+    foreach(v.arr[i])
+      $display("a[%0d]=%0d",i,v.arr[i]); 
+  end
+endmodule
