@@ -38,6 +38,8 @@ Types of constraints:
             constraint vlsi{
                 variable{}
             }
+
+
     2)Inside Constraints
         ->randomize the variables which are within the range of values
             Example
@@ -230,6 +232,24 @@ Types of constraints:
     6) Solve-Before Constraint
         example 
             constraint c1 {solve a; before b;}
+
+        program:
+        class sample;
+        rand bit [7:0]a,b;
+        constraint c1 {solve a before b;}
+        constraint c2 {b== a+15;}
+        endclass
+
+        module tb;
+        sample s = new();
+        initial begin
+            assert(s.randomize());
+            $display("a=%0d,b=%0d",s.a,s.b);
+        end
+        endmodule
+        output:
+        # KERNEL: a=27,b=42
+        -=-=-=-=-=-=-=-=-=-
 
 
     7) Unique Constraint
