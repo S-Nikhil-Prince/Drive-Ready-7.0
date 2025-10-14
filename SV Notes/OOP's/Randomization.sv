@@ -136,6 +136,53 @@ Types of constraints:
                     constraint c1{a>>10;}
                     constraint c2{a<<10;}
 
+        -=-=-=-=-=-=-=-=-=-
+        Program: - {normally it will give the randomization failed error}
+        class sample;
+        rand bit[7:0] t;
+        constraint c1 { {t==10};}
+        endclass
+
+        module tb;
+        sample s = new();
+        initial begin
+            assert(s.randomize());
+            $display("t=%0d",s.t);
+            assert(s.randomize() with {t==11;});
+            $display("t=%0d",s.t);
+        end
+        endmodule
+        Output:
+        # KERNEL: t=10
+        # RCKERNEL: Warning: RC_0024 testbench.sv(11): Randomization failed. The condition of randomize call cannot be satisfied.
+        # RCKERNEL: Info: RC_0109 testbench.sv(11): ... after reduction s.t to 10
+        # RCKERNEL: Info: RC_0103 testbench.sv(11): ... the following condition cannot be met: (8'(10)==11)
+        # RCKERNEL: Info: RC_1007 testbench.sv(1): ... see class 'sample' declaration.
+        # ASSERT: Error: ASRT_0301 testbench.sv(11): Immediate assert condition (s.randomize(...)) FAILED at time: 0ns, scope: tb
+        # KERNEL: t=10
+        -=-=-=-=-=-=-=-=-=-
+        
+        -=-=-=-=-=-=-=-=-=-
+        Program: - {but while using soft keyword it will work fine}
+        class sample;
+        rand bit[7:0] t;
+        constraint c1 {soft {t==10};}
+        endclass
+
+        module tb;
+        sample s = new();
+        initial begin
+            assert(s.randomize());
+            $display("t=%0d",s.t);
+            assert(s.randomize() with {t==11;});
+            $display("t=%0d",s.t);
+        end
+        endmodule
+        output:
+        # KERNEL: t=10
+        # KERNEL: t=11
+        -----------------------------------------------------------
+
     4)Distributed or Weighted Constraints
         ->controls the values on randomization
         ->Keyword "dist"
@@ -245,23 +292,3 @@ Modes Of Constraints:
 
 
 2) Distributed Constraint:
-
-class vlsi;
-  rand bit [7:0] arr [int]; 
-  constraint cu {unique {arr};}
-endclass
-
-module tb;
-  vlsi v=new();
-  initial begin
-    s.arr[10]=0;
-    s.arr[20]=0;
-    s.arr[30]=0;
-    s.arr[40]=0;
-    s.arr[50]=0;
-    //repeat(5)begin
-    assert(v.randomize());
-    foreach(v.arr[i])
-      $display("a[%0d]=%0d",i,v.arr[i]); 
-  end
-endmodule
