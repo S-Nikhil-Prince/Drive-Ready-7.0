@@ -139,3 +139,73 @@ module tb;
 endmodule
 output:
 # KERNEL: 0 1 1 2 3 5 8 13 21 34
+
+factorial of a number using constraints
+class sample;
+  rand bit [7:0]a[];
+  int i;
+  constraint c1 {
+    a.size==5;
+    a[0]==1;
+    foreach(a[i])
+      if(i>0)
+        a[i]==a[i-1]*(i+1);
+  }
+endclass
+
+module tb;
+  sample s=new();
+  initial begin
+     assert(s.randomize());
+    foreach (s.a[i])
+      $write("%0d ",s.a[i]);
+  end
+endmodule
+4)Write a program to print palindromes
+// Code your testbench here
+// or browse Examples
+class sample;
+  randc bit [7:0] val;
+  constraint c1{
+    val inside {[0:255]};
+  }
+  function void palin(int a,int b,output int palindrome);
+    if(a==b)
+      palindrome=a;
+  endfunction
+
+  function void reverse(int a,output int b);
+    int temp;
+    while(a>0) begin
+      temp=a%10;
+      b=(b*10)+temp;
+      a=a/10;
+    end
+  endfunction
+endclass
+
+module tb;
+  sample s=new();
+  int b;
+  int palindrome;
+  initial begin
+    repeat(255) begin
+      assert(s.randomize());
+      s.reverse(s.val,b);
+      s.palin(s.val,b,palindrome);
+      if(palindrome!=0)
+      	$display("Palindrome=%0d",palindrome);
+    end
+  end
+endmodule
+
+
+5)write a constraint for below scenario a<20 then b value should be generated from 10-30 and if b>20 then a value should be generated from 30-50;
+
+6) write a constrant for 16 bit adress which should condtain 8th bit as 1
+
+7) write a constrant for 16 bit adress to generate power of 2
+
+8) write a constraint for apb slave select signals
+
+9) declare a queue fill with 20 random values between 300-500 with no repeatition.
