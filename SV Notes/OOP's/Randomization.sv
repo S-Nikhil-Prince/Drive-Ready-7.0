@@ -322,7 +322,8 @@ Types of constraints:
         endmodule
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
+Randomization modes:
+rand_mode(0):
 Example:
 program:
 class sample;
@@ -387,3 +388,5 @@ Example:
         parent.randc(1);
         child.randc(0);
         child.randc(1);
+
+
