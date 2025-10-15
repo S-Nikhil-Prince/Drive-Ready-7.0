@@ -206,6 +206,25 @@ endmodule
 
 7) write a constrant for 16 bit adress to generate power of 2
 
+
+
 8) write a constraint for apb slave select signals
+class apb_master;
+  rand bit [3:0] pselx;
+
+  constraint c1{
+    pselx inside {[1:16]};
+  }
+endclass
+
+module tb;
+  apb_master mas = new();
+  initial begin
+    repeat(10) begin
+      assert(mas.randomize());
+      $display("Pselx=%0d ",mas.pselx);
+    end
+  end
+endmodule
 
 9) declare a queue fill with 20 random values between 300-500 with no repeatition.
