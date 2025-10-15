@@ -205,6 +205,24 @@ endmodule
 6) write a constrant for 16 bit adress which should condtain 8th bit as 1
 
 7) write a constrant for 16 bit adress to generate power of 2
+class sample;
+  rand bit [15:0] val;
+  constraint c1{
+    val != 0; 
+    $onehot(val); 
+  }
+endclass
+
+module tb;
+  sample s=new();
+  initial begin
+    repeat (50) begin
+      assert(s.randomize());
+      $display("value=%0d",s.val);
+    end
+  end
+endmodule
+
 
 
 
