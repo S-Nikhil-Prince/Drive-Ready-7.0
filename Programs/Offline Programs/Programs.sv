@@ -203,6 +203,24 @@ endmodule
 5)write a constraint for below scenario a<20 then b value should be generated from 10-30 and if b>20 then a value should be generated from 30-50;
 
 6) write a constrant for 16 bit adress which should condtain 8th bit as 1
+class sample;
+  rand bit [15:0] addr;
+
+  constraint c1{
+    addr[8]==1;
+  }
+endclass
+
+module tb;
+  sample s = new();
+  initial begin
+    repeat(10) begin
+      assert(s.randomize());
+      $display("addr=%b ",s.addr);
+    end
+  end
+endmodule
+
 
 7) write a constrant for 16 bit adress to generate power of 2
 class sample;
