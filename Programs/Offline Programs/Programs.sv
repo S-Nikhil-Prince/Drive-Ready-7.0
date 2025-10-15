@@ -115,3 +115,27 @@ output:
 # KERNEL: a[7]=2
 # KERNEL: a[8]=1
 # KERNEL: a[9]=0
+
+class sample;
+  rand bit [7:0]a[];
+  int i;
+  constraint c1 {
+    a.size==10;
+    a[0]==0;
+    a[1]==1;
+    foreach(a[i])
+      if(i>=2)
+        a[i]==a[i-1]+a[i-2];
+  }
+endclass
+
+module tb;
+  sample s=new();
+  initial begin
+     assert(s.randomize());
+    foreach (s.a[i])
+      $write("%0d ",s.a[i]);
+  end
+endmodule
+output:
+# KERNEL: 0 1 1 2 3 5 8 13 21 34
