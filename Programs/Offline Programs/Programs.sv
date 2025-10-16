@@ -246,6 +246,30 @@ endmodule
 
 
 7) write a constrant for 16 bit adress to generate power of 2
+program:
+class sample;
+  rand bit [15:0] val[];
+  constraint c1{
+    val.size inside {16};
+    foreach(val[i])
+      val[i]==1'b1<<i;
+  }
+endclass
+
+module tb;
+  sample s=new();
+  initial begin
+    assert(s.randomize());
+    foreach(s.val[i])
+      $display("2^%0d=%0d",s.val[i]);
+  end
+endmodule
+output:
+# KERNEL: 2^0=1
+.
+.
+
+
 class sample;
   rand bit [15:0] val;
   constraint c1{
