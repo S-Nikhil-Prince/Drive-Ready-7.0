@@ -162,8 +162,30 @@ module tb;
   end
 endmodule
 4)Write a program to print palindromes
-// Code your testbench here
-// or browse Examples
+simple method: Only using constraints
+class sample;
+  rand bit [2:0] a[]; 
+  
+  constraint c1 {// n=5 
+    a.size == 6;
+    foreach(a[i])
+      a[i-1]==a[a.size-i];
+  }
+endclass
+
+module tb;
+  sample s=new();
+  int i; 
+  initial begin
+    repeat(10) begin
+      assert(s.randomize());
+      $write("Array: ");
+      foreach(s.a[i])
+        $write("%0d ",s.a[i]);
+    end
+  end
+endmodule
+hard method:
 class sample;
   randc bit [7:0] val;
   constraint c1{
