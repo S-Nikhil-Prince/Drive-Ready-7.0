@@ -167,7 +167,7 @@ class sample;
   rand bit [2:0] a[]; 
   
   constraint c1 {// n=5 
-    a.size == 6;
+    a.size == 5;
     foreach(a[i])
       a[i-1]==a[a.size-i];
   }
@@ -182,6 +182,7 @@ module tb;
       $write("Array: ");
       foreach(s.a[i])
         $write("%0d ",s.a[i]);
+      $display("");
     end
   end
 endmodule
