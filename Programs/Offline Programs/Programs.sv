@@ -186,6 +186,7 @@ module tb;
     end
   end
 endmodule
+
 hard method:
 class sample;
   randc bit [7:0] val;
