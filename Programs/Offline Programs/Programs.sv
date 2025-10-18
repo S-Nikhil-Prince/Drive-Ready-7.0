@@ -312,3 +312,23 @@ module tb;
 endmodule
 
 9) declare a queue fill with 20 random values between 300-500 with no repeatition.
+class sample;
+  rand bit [8:0] a[$];
+  int i,j;
+  constraint c1 {
+    a.size==20;
+    foreach(a[i])
+      a[i] inside {[300:500]};
+    foreach(a[i])
+      foreach(a[j])
+        if(i!=j) a[i]!=a[j];
+  }
+endclass
+module tb;
+  sample s=new();
+  initial begin
+    assert(s.randomize());
+    foreach (s.a[i])
+      $display("a[%0d]=%0d",i,s.a[i]);
+  end
+endmodule
