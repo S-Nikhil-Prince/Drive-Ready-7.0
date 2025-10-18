@@ -233,7 +233,7 @@ class sample;
   constraint c1{
     addr[8]==1;
   }
-endclass
+endclass 
 
 module tb;
   sample s = new();
