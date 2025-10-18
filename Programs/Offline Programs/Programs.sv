@@ -242,7 +242,7 @@ module tb;
       assert(s.randomize());
       $display("addr=%b ",s.addr);
     end
-  end
+  end 
 endmodule
 
 
