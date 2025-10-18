@@ -245,7 +245,6 @@ module tb;
   end 
 endmodule
 
-
 7) write a constrant for 16 bit adress to generate power of 2
 program:
 class sample;
