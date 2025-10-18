@@ -267,8 +267,6 @@ module tb;
 endmodule
 output:
 # KERNEL: 2^0=1
-.
-.
 
 
 class sample;
