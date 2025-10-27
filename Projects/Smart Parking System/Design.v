@@ -46,3 +46,10 @@ module smart_parking_system (
     end
 
 endmodule
+
+// this is a design file for a smart parking system module
+---> description
+when sensor detects a car at the entry gate and there are available spaces the gates open and after a time they close again.
+when sensor detects a car at the exit gate and there are cars parked the gates open and after a time they close again.
+when the sensor detects a car at the entry gate and there are no available spaces the gate remains closed.
+when the sensor detects a car at the exit gate and there are no cars parked the gate remains closed.
