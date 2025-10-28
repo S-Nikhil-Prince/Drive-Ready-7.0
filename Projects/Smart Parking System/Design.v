@@ -51,3 +51,4 @@ when sensor detects a car at the exit gate and there are cars parked the gates o
 when the sensor detects a car at the entry gate and there are no available spaces the gate remains closed.
 when the sensor detects a car at the exit gate and there are no cars parked the gate remains closed.
 // This is a design file for a smart parking system module.
+// Description
