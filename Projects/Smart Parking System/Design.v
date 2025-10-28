@@ -53,3 +53,4 @@ when the sensor detects a car at the exit gate and there are no cars parked the 
 // This is a design file for a smart parking system module.
 // Description
 // When sensor detects a car at the entry gate and there are available spaces the gates open and after a time they close again.
+// When sensor detects a car at the exit gate and there are cars parked the gates open and after a time they close again.
