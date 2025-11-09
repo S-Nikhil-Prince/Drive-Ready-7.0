@@ -329,3 +329,4 @@ module tb;
       $display("a[%0d]=%0d",i,s.a[i]);
   end
 endmodule
+
