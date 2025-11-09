@@ -1,4 +1,6 @@
 install ubuntu virtual machine
+
+
 **ctrl+alt+t :** is the shortcut to open the terminal:
 
 **"root"** directory is the top level directory**.**
