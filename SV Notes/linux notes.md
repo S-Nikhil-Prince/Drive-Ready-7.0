@@ -5,7 +5,7 @@
 
 
 
-**pwd** working directory
+**pwd** present working directory
 
 **ls   :** shows all files in the directory
 
