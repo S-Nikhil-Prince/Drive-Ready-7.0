@@ -4,7 +4,6 @@ install ubuntu virtual machine
 
 **"root"** directory is the top level directory**.**
 
-
 **pwd** present working directory
 
 **ls   :** shows all files in the directory
