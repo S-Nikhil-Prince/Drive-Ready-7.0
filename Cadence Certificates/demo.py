@@ -10,7 +10,10 @@ for i in range (int(input())):
 # Bus speed: 400kHz, Address: 0x3C
 # Entry 5: Antenna design parameters
 # Gain: 3dBi, Frequency: 2.4GHz
+# Entry 6: Full adder implementation
+# Inputs: A, B, Cin; Outputs: Sum, Cout
   
+
 
 
 
