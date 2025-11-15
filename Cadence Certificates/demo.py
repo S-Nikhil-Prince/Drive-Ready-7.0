@@ -4,6 +4,9 @@ for i in range (int(input())):
 # Clock frequency: 100 MHz
 # Data entry 2: RTL design specs
 # Voltage: 1.8V, Power: 25mW
+# Entry 3: Synthesis tool settings
+# Area: 0.5mm², Timing slack: 2ns
   
+
 
 
