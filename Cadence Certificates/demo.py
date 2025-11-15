@@ -6,7 +6,10 @@ for i in range (int(input())):
 # Voltage: 1.8V, Power: 25mW
 # Entry 3: Synthesis tool settings
 # Area: 0.5mm², Timing slack: 2ns
+# Entry 4: I2C protocol configuration
+# Bus speed: 400kHz, Address: 0x3C
   
+
 
 
 
