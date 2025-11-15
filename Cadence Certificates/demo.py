@@ -8,7 +8,10 @@ for i in range (int(input())):
 # Area: 0.5mm², Timing slack: 2ns
 # Entry 4: I2C protocol configuration
 # Bus speed: 400kHz, Address: 0x3C
+# Entry 5: Antenna design parameters
+# Gain: 3dBi, Frequency: 2.4GHz
   
+
 
 
 
