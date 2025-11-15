@@ -12,7 +12,10 @@ for i in range (int(input())):
 # Gain: 3dBi, Frequency: 2.4GHz
 # Entry 6: Full adder implementation
 # Inputs: A, B, Cin; Outputs: Sum, Cout
+# Entry 7: Multiplexer design specs
+# 4:1 MUX, Propagation delay: 1.5ns
   
+
 
 
 
