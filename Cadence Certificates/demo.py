@@ -14,7 +14,9 @@ for i in range (int(input())):
 # Inputs: A, B, Cin; Outputs: Sum, Cout
 # Entry 7: Multiplexer design specs
 # 4:1 MUX, Propagation delay: 1.5ns
+# Commit 1: Testing automated commits
   
+
 
 
 
