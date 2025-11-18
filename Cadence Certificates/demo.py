@@ -42,3 +42,7 @@ for i in range (int(input())):
 
 # Entry 9: Counter design implementation
 # 8-bit synchronous counter, Up/Down control, Reset signal
+
+
+# Entry 10: Register file architecture
+# 32 registers, 16-bit width, Dual-port read, Single-port write
