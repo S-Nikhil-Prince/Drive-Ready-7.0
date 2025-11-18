@@ -46,3 +46,7 @@ for i in range (int(input())):
 
 # Entry 10: Register file architecture
 # 32 registers, 16-bit width, Dual-port read, Single-port write
+
+
+# Entry 11: ALU operations module
+# ADD, SUB, AND, OR, XOR, SHL, SHR operations; Flag outputs
