@@ -50,3 +50,7 @@ for i in range (int(input())):
 
 # Entry 11: ALU operations module
 # ADD, SUB, AND, OR, XOR, SHL, SHR operations; Flag outputs
+
+
+# Entry 12: FIFO buffer design
+# Depth: 16 words, Width: 8-bit, Full/Empty flags, Read/Write pointers
