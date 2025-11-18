@@ -54,3 +54,7 @@ for i in range (int(input())):
 
 # Entry 12: FIFO buffer design
 # Depth: 16 words, Width: 8-bit, Full/Empty flags, Read/Write pointers
+
+
+# Entry 13: UART transmitter design
+# Baud rate: 9600, Data bits: 8, Parity: Even, Stop bits: 1
