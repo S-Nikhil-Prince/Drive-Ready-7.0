@@ -39,3 +39,6 @@ for i in range (int(input())):
 
 
 
+
+# Entry 9: Counter design implementation
+# 8-bit synchronous counter, Up/Down control, Reset signal
