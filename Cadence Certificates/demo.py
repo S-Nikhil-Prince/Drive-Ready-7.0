@@ -28,6 +28,9 @@ for i in range (int(input())):
 # Commit 5: Progress tracking
 # Commit 6: Daily practice session
 # Commit 7: Keeping up the streak
+# Entry 8: State machine design
+# States: Idle, Active, Complete; Transitions: Clock-based
+
 
 
 
