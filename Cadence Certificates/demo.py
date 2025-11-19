@@ -63,3 +63,8 @@ for i in range (int(input())):
 
 # Entry 14: Pipeline processor design
 # 5-stage pipeline: Fetch, Decode, Execute, Memory, Writeback
+
+
+
+# Entry 15: Cache memory controller
+# Direct-mapped cache, 256 lines, Block size: 4 words, Write-through policy
