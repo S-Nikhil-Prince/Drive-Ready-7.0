@@ -87,3 +87,11 @@
 # Entry 18: PWM (Pulse Width Modulation) generator
 # Variable duty cycle, Configurable frequency, Digital-to-analog output
 
+
+
+
+# Entry 19: SPI (Serial Peripheral Interface) master
+# Full-duplex communication, CPOL/CPHA configurable, Multi-slave support
+
+# Entry 20: Watchdog timer
+# Timeout counter, System reset on overflow, Periodic refresh mechanism
