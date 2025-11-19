@@ -68,3 +68,8 @@ for i in range (int(input())):
 
 # Entry 15: Cache memory controller
 # Direct-mapped cache, 256 lines, Block size: 4 words, Write-through policy
+
+
+
+# Entry 16: Memory arbiter design
+# Multiple masters, Priority-based arbitration, Round-robin scheduler
