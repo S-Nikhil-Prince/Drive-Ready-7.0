@@ -78,3 +78,8 @@ for i in range (int(input())):
 
 # Entry 17: Clock domain crossing (CDC) synchronizer
 # Dual-flop synchronizer, Metastability prevention, Gray code counter
+
+
+
+# Entry 18: PWM (Pulse Width Modulation) generator
+# Variable duty cycle, Configurable frequency, Digital-to-analog output
