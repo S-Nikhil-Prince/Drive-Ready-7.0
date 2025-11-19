@@ -58,3 +58,8 @@ for i in range (int(input())):
 
 # Entry 13: UART transmitter design
 # Baud rate: 9600, Data bits: 8, Parity: Even, Stop bits: 1
+
+
+
+# Entry 14: Pipeline processor design
+# 5-stage pipeline: Fetch, Decode, Execute, Memory, Writeback
