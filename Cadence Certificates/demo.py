@@ -73,3 +73,8 @@ for i in range (int(input())):
 
 # Entry 16: Memory arbiter design
 # Multiple masters, Priority-based arbitration, Round-robin scheduler
+
+
+
+# Entry 17: Clock domain crossing (CDC) synchronizer
+# Dual-flop synchronizer, Metastability prevention, Gray code counter
