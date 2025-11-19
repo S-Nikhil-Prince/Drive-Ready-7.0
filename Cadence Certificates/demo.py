@@ -1,4 +1,7 @@
-for i in range (int(input())):
+
+
+# Entry 19: SPI (Serial Peripheral Interface) master
+# Full-duplex communication, CPOL/CPHA configurable, Multi-slave supportfor i in range (int(input())):
   print(i**)
 # Random data entry 1: VLSI design parameters
 # Clock frequency: 100 MHz
@@ -83,3 +86,4 @@ for i in range (int(input())):
 
 # Entry 18: PWM (Pulse Width Modulation) generator
 # Variable duty cycle, Configurable frequency, Digital-to-analog output
+
