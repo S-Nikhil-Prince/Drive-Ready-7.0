@@ -20,6 +20,7 @@
 # Commit 1: Testing automated commits
 # Commit 2: Adding more content
 # Commit 3: Decoder implementation
+# Commit 4: Encoder design specs
   
 
 # Commit 3: Continuous updates
@@ -96,4 +97,5 @@
 
 # Entry 20: Watchdog timer
 # Timeout counter, System reset on overflow, Periodic refresh mechanism
+
 
