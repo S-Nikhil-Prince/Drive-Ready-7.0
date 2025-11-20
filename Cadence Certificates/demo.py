@@ -110,3 +110,6 @@
 
 
 # Commit 9: Power management unit
+
+
+# Commit 10: Debug interface module
