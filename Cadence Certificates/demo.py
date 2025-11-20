@@ -23,6 +23,7 @@
 # Commit 4: Encoder design specs
 # Commit 5: State machine design
 # Commit 6: Memory controller specs
+# Commit 7: Pipeline architecture
   
 
 # Commit 3: Continuous updates
@@ -99,6 +100,7 @@
 
 # Entry 20: Watchdog timer
 # Timeout counter, System reset on overflow, Periodic refresh mechanism
+
 
 
 
