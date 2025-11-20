@@ -28,6 +28,7 @@
 
 # Commit 3: Continuous updates
 
+# Commit 8: Clock domain crossing
 
 # Commit 4: More practice data
 
@@ -100,6 +101,7 @@
 
 # Entry 20: Watchdog timer
 # Timeout counter, System reset on overflow, Periodic refresh mechanism
+
 
 
 
