@@ -128,3 +128,8 @@
 
 # Entry 23: AXI protocol implementation
 # AXI4, AXI-Lite, AXI-Stream, Handshaking signals, Burst transactions
+
+
+
+# Entry 24: Low power design techniques
+# Clock gating, Power gating, Multi-Vt cells, Dynamic voltage scaling
