@@ -133,3 +133,8 @@
 
 # Entry 24: Low power design techniques
 # Clock gating, Power gating, Multi-Vt cells, Dynamic voltage scaling
+
+
+
+# Entry 25: USB protocol implementation
+# USB 2.0/3.0, UTMI interface, Packet structure, Endpoint management
