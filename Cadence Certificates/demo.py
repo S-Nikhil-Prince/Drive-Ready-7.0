@@ -138,3 +138,8 @@
 
 # Entry 25: USB protocol implementation
 # USB 2.0/3.0, UTMI interface, Packet structure, Endpoint management
+
+
+
+# Entry 26: PCIe interface design
+# PCIe Gen3/Gen4, Transaction layer, Data link layer, LTSSM state machine
