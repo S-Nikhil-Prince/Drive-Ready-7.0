@@ -113,3 +113,8 @@
 
 
 # Commit 10: Debug interface module
+
+
+
+# Entry 21: FIFO buffer design
+# Synchronous/Asynchronous FIFO, Depth configuration, Read/Write pointers
