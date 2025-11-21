@@ -123,3 +123,8 @@
 
 # Entry 22: Memory controller design
 # SDRAM controller, Refresh cycles, Timing constraints, Address mapping
+
+
+
+# Entry 23: AXI protocol implementation
+# AXI4, AXI-Lite, AXI-Stream, Handshaking signals, Burst transactions
