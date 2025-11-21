@@ -118,3 +118,8 @@
 
 # Entry 21: FIFO buffer design
 # Synchronous/Asynchronous FIFO, Depth configuration, Read/Write pointers
+
+
+
+# Entry 22: Memory controller design
+# SDRAM controller, Refresh cycles, Timing constraints, Address mapping
