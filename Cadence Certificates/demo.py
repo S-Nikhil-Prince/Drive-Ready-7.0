@@ -162,3 +162,7 @@
 
 
 # Configuration 5: LIN network setup
+
+
+
+# Configuration 6: FlexRay protocol setup
