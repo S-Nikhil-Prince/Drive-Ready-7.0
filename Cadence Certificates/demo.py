@@ -146,3 +146,7 @@
 # Entry 26: PCIe interface design
 # PCIe Gen3/Gen4, Transaction layer, Data link layer, LTSSM state machine
 
+
+
+
+# Configuration 2: I2C slave mode
