@@ -158,3 +158,7 @@
 
 
 # Configuration 4: CAN bus settings
+
+
+
+# Configuration 5: LIN network setup
