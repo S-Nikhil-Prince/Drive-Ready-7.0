@@ -28,6 +28,8 @@
 
 # Commit 3: Continuous updates
 
+# Configuration 1: SPI Master Setup
+
 # Commit 8: Clock domain crossing
 
 # Commit 4: More practice data
@@ -143,3 +145,4 @@
 
 # Entry 26: PCIe interface design
 # PCIe Gen3/Gen4, Transaction layer, Data link layer, LTSSM state machine
+
