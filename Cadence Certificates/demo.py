@@ -166,3 +166,7 @@
 
 
 # Configuration 6: FlexRay protocol setup
+
+
+
+# Configuration 7: ETHERCAT industrial protocol
