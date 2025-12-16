@@ -150,3 +150,7 @@
 
 
 # Configuration 2: I2C slave mode
+
+
+
+# Configuration 3: UART baud rate settings
