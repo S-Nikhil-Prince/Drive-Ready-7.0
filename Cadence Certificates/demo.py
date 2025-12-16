@@ -154,3 +154,7 @@
 
 
 # Configuration 3: UART baud rate settings
+
+
+
+# Configuration 4: CAN bus settings
