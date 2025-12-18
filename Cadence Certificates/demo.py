@@ -1,6 +1,6 @@
 # Practice commit 1
 # Practice commit 2
-# Entry 19: SPI (Serial Peripheral Interface) master
+# Practice commit 3# Entry 19: SPI (Serial Peripheral Interface) master
 # Full-duplex communication, CPOL/CPHA configurable, Multi-slave supportfor i in range (int(input())):
   print(i**)
 # Random data entry 1: VLSI design parameters
@@ -194,5 +194,6 @@
 
 
 # Commit 12: Documentation
+
 
 
