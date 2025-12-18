@@ -1,5 +1,5 @@
 # Practice commit 1
-
+# Practice commit 2
 # Entry 19: SPI (Serial Peripheral Interface) master
 # Full-duplex communication, CPOL/CPHA configurable, Multi-slave supportfor i in range (int(input())):
   print(i**)
@@ -194,4 +194,5 @@
 
 
 # Commit 12: Documentation
+
 
