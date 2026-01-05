@@ -130,3 +130,5 @@ Personal learning notes covering:
 <!-- Commit 2: Enhance repository documentation -->
 
 <!-- Commit 3: Refactor content organization -->
+
+<!-- Commit 4: Optimize formatting and styling -->
