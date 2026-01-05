@@ -132,3 +132,5 @@ Personal learning notes covering:
 <!-- Commit 3: Refactor content organization -->
 
 <!-- Commit 4: Optimize formatting and styling -->
+
+<!-- Commit 5: Maintain code consistency -->
