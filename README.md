@@ -123,4 +123,6 @@ Personal learning notes covering:
   <img src="https://komarev.com/ghpvc/?username=S-Nikhil-Prince&style=for-the-badge&color=3BAFDA&label=Repo+Views" />
 </p>
 
+<!-- Commit 1: Initial documentation update -->
+
 <h3 align="center" style="color:gray;">⚡ Driven by Curiosity · Built with Code · Verified by Practice ⚡</h3>
