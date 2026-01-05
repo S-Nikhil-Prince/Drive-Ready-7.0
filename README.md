@@ -128,3 +128,5 @@ Personal learning notes covering:
 <h3 align="center" style="color:gray;">⚡ Driven by Curiosity · Built with Code · Verified by Practice ⚡</h3>
 
 <!-- Commit 2: Enhance repository documentation -->
+
+<!-- Commit 3: Refactor content organization -->
