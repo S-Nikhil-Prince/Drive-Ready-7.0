@@ -126,3 +126,5 @@ Personal learning notes covering:
 <!-- Commit 1: Initial documentation update -->
 
 <h3 align="center" style="color:gray;">⚡ Driven by Curiosity · Built with Code · Verified by Practice ⚡</h3>
+
+<!-- Commit 2: Enhance repository documentation -->
